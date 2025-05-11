@@ -4,7 +4,7 @@ This dataset provides a detailed view of global cyber security threats and incid
 
 [Dashboard (Power BI)](project%203/2025-05-08%20(1).png)
 
-[Download Dashboard (Power BI)]()
+[Download Dashboard (Power BI)](project%203/Global_Cybersecurity_Threats_Power%20BI.pbip)
 
 [Download csv file]()
 
