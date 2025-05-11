@@ -2,7 +2,7 @@
 
 This dataset provides a detailed view of global cyber security threats and incidents. It includes various attributes such as attack sources, types, countries involved, financial impact, and defense mechanisms. The data has been enhanced with additional features to support advanced analytical and machine learning tasks.
 
-[Dashboard (Power BI)](project%203/2025-05-08%20(1).png)
+![Dashboard (Power BI)](project%203/2025-05-08%20(1).png)
 
 [Download Dashboard (Power BI)](project%203/Global_Cybersecurity_Threats_Power%20BI.pbip)
 
