@@ -1,0 +1,126 @@
+table Global_Cybersecurity_Threats_2015-2024
+	lineageTag: 216f6d0b-d52f-43a2-a693-64e4ef78b46f
+
+	column Column1
+		dataType: int64
+		formatString: 0
+		lineageTag: b0373e6f-7a6e-4151-a406-68bfb1cd6453
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: b46e93f2-f959-4696-8569-e37c700acc34
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bab321a-6fb4-497f-be33-59cb6a8a82d6
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Type'
+		dataType: string
+		lineageTag: 9af5279e-ffbe-40db-8179-f2c96e0fffc0
+		summarizeBy: none
+		sourceColumn: Attack Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Industry'
+		dataType: string
+		lineageTag: 43f5a5d7-9983-478b-8e69-76971dd40591
+		summarizeBy: none
+		sourceColumn: Target Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Financial Loss (in Million $)'
+		dataType: double
+		lineageTag: fb1ef2f6-b7d1-497f-9ffd-61bbe614d845
+		summarizeBy: sum
+		sourceColumn: Financial Loss (in Million $)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Number of Affected Users'
+		dataType: int64
+		formatString: 0
+		lineageTag: 95c17ff6-818e-45d3-9360-5679af3ce95e
+		summarizeBy: sum
+		sourceColumn: Number of Affected Users
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Source'
+		dataType: string
+		lineageTag: 22c30097-f50a-49ce-9e84-a4f60eee7e5a
+		summarizeBy: none
+		sourceColumn: Attack Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Security Vulnerability Type'
+		dataType: string
+		lineageTag: 23b1330c-2e71-41e4-97e1-7f7537c3bb8a
+		summarizeBy: none
+		sourceColumn: Security Vulnerability Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Defense Mechanism Used'
+		dataType: string
+		lineageTag: fcce4e02-1df2-45d4-a102-ecade4b0aaef
+		summarizeBy: none
+		sourceColumn: Defense Mechanism Used
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incident Resolution Time (in Hours)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 18e7d483-314f-46a5-83d7-3b47d73426b6
+		summarizeBy: sum
+		sourceColumn: Incident Resolution Time (in Hours)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Threat_Level
+		dataType: string
+		lineageTag: 1bb32d99-735d-4a56-b9b8-8c2f549b6ade
+		summarizeBy: none
+		sourceColumn: Threat_Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attacks_per_country
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e454df5-9409-4978-b443-fe716e2bcb21
+		summarizeBy: sum
+		sourceColumn: Attacks_per_country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Global_Cybersecurity_Threats_2015-2024 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\My Fills\For course\project 3\Global_Cybersecurity_Threats_2015-2024.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"Country", type text}, {"Year", Int64.Type}, {"Attack Type", type text}, {"Target Industry", type text}, {"Financial Loss (in Million $)", type number}, {"Number of Affected Users", Int64.Type}, {"Attack Source", type text}, {"Security Vulnerability Type", type text}, {"Defense Mechanism Used", type text}, {"Incident Resolution Time (in Hours)", Int64.Type}, {"Threat_Level", type text}, {"Attacks_per_country", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
